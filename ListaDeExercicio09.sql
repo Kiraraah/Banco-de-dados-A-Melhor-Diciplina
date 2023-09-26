@@ -1,13 +1,12 @@
 DELIMITER //
 
-CREATE PROCEDURE sp_AutorMaisAntigo()
+CREATE PROCEDURE sp_LivrosAteAno(
+    IN ano_publicacao INT 
+)
 BEGIN
-    SELECT NomeAutor
-    FROM Autores
-    WHERE DataNascimento = (
-        SELECT MIN(DataNascimento)
-        FROM Autores
-    );
+    SELECT LivroTitulo
+    FROM Livros
+    WHERE AnoPublicacao <= ano_publicacao;
 END //
 
 DELIMITER;
